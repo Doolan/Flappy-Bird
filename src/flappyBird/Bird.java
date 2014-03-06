@@ -30,10 +30,13 @@ public class Bird {
 	private void calculateY(){
 	this.velocity+=this.accl;
 	this.y-=0.1*this.velocity;
+	if(this.angle<Math.PI/3){
+		this.angle+=Math.PI/50;
+	}
 	}
 	public void boost() {
-		System.out.println("boost");
 		this.velocity=170;
+		this.angle=-Math.PI/3;
 	}
 	public double getY(){
 		return this.y;

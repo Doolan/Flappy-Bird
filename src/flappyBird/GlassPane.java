@@ -47,7 +47,6 @@ public class GlassPane extends JComponent {
 	public void checkDead(Pipes pipe){
 		if(!(pipe.max()>bird.getY() )|| !(pipe.min()<bird.getY())){
 			this.dead=true;
-			System.out.println("Dead"+"  MAX="+pipe.max()+", min="+pipe.min());
 		}
 	}
 	@Override
@@ -63,23 +62,23 @@ public class GlassPane extends JComponent {
 				this.x1 = 930;
 				this.pipeA = new Pipes(this.x1);
 			}
-			this.x1 -= 3;
-			this.x2 -= 3;
+			this.x1 -= 4;
+			this.x2 -= 4;
 			// draws the pipe
 			this.pipeA.draw(g2, this.x1);
 			this.pipeB.draw(g2, this.x2);
 			// bird
 			this.bird.draw(g2);
 			// Checks if dead
-			if(Math.abs(Main.FRAMEWIDTH/2-(x1+50))<50){
+			if(Math.abs(Main.FRAMEWIDTH/2-(x1-50))<50){
 				this.checkDead(pipeA);
 			}
-			if(Math.abs(Main.FRAMEWIDTH/2-(x2+50))<50){
+			if(Math.abs(Main.FRAMEWIDTH/2-(x2-50))<50){
 				this.checkDead(pipeB);
 			}
 		} else {
 			//death Screen
-			ImageRendering.drawImage(g2, "Graphics/gameOver.jpg", 250, 400, 0);
+			ImageRendering.drawImage(g2, "Graphics/gameOver.png", 400, 450, 0);
 		}
 	}
 

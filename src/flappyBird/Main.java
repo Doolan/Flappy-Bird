@@ -61,7 +61,7 @@ public class Main {
 		Thread t1 = new Thread(runn);
 
 		try {
-			Thread.sleep(50);
+			Thread.sleep(30);
 		} catch (InterruptedException e) {
 			Thread.currentThread().interrupt();
 		}

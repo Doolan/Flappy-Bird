@@ -29,7 +29,7 @@ public class Pipes {
 		return (this.opening+5)*Main.PIPEHEIGHT;
 	}
 	public int min(){
-		return (this.opening)*Main.PIPEHEIGHT;
+		return (int) ((this.opening+.5)*Main.PIPEHEIGHT);
 	}
 	public void draw(Graphics2D g2,int x) {
 		this.x=x;

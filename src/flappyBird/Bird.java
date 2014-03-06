@@ -19,12 +19,12 @@ public class Bird {
 	private int count;
 	private double accl=-14.5;
 
-	public Bird() {
+	public Bird(String path) {
 		this.y = Main.FRAMEWIDTH / 2;
 		this.velocity = 0;
 		this.angle = 0;
-		this.spritePath = "penguins";
-		// this.sprite=0;
+		this.spritePath=path;
+//		this.spritePath = "penguins";
 
 	}
 	private void calculateY(){

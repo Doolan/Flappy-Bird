@@ -17,10 +17,12 @@ public class Pipes {
 	private int opening;
 	private int x;
 	private int numberOFparts;
+	private String path;
 
-	Pipes(int x) {
+	Pipes(int x, String path) {
 		this.x = x;
 		Random generator = new Random();
+		this.path=path;
 		this.numberOFparts = Main.FRAMEHEIGHT / Main.PIPEHEIGHT;
 		this.opening = generator.nextInt(this.numberOFparts - 13) + 2;
 
@@ -34,16 +36,16 @@ public class Pipes {
 	public void draw(Graphics2D g2,int x) {
 		this.x=x;
 		for (int i = 0; i < this.opening; i++) {
-			ImageRendering.drawImage(g2, "Graphics/PipeBottom.png", this.x, i
+			ImageRendering.drawImage(g2, "Graphics/"+this.path+"Bottom.png", this.x, i
 					* Main.PIPEHEIGHT, 0);
 		}
-		ImageRendering.drawImage(g2, "Graphics/PipeTop.png", this.x,
+		ImageRendering.drawImage(g2, "Graphics/"+this.path+"Top.png", this.x,
 				(this.opening ) * Main.PIPEHEIGHT, Math.PI);
-		ImageRendering.drawImage(g2, "Graphics/PipeTop.png", this.x,
+		ImageRendering.drawImage(g2, "Graphics/"+this.path+"Top.png", this.x,
 				(this.opening + 5) * Main.PIPEHEIGHT, 0);
 		
 		for (int i = this.opening+6; i <this.numberOFparts; i++) {
-			ImageRendering.drawImage(g2, "Graphics/PipeBottom.png", this.x, i
+			ImageRendering.drawImage(g2, "Graphics/"+this.path+"Bottom.png", this.x, i
 					* Main.PIPEHEIGHT, 0);
 		}
 	}

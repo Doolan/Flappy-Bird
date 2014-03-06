@@ -3,13 +3,13 @@
  */
 package flappyBird;
 
-import java.awt.BorderLayout;
-
-import javax.swing.ImageIcon;
-import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.UIManager;
-import javax.swing.UnsupportedLookAndFeelException;
+//import java.awt.BorderLayout;
+//
+//import javax.swing.ImageIcon;
+//import javax.swing.JFrame;
+//import javax.swing.JLabel;
+//import javax.swing.UIManager;
+//import javax.swing.UnsupportedLookAndFeelException;
 
 
 /**
@@ -35,37 +35,8 @@ public class Main {
 //				| IllegalAccessException | UnsupportedLookAndFeelException exception) {
 //			exception.printStackTrace();
 //		}
-		
-		//Frame setup
-		JFrame frame=new JFrame();
-		frame.setSize(FRAMEWIDTH,FRAMEHEIGHT);
-		frame.setResizable(false);
-		JLabel background = new JLabel(new ImageIcon(
-				"Graphics/CityBackground_skinny1.png"));
-		frame.add(background, BorderLayout.CENTER);
-		
-		//Glass Pane
-		GlassPane glass=new GlassPane();
-		frame.setGlassPane(glass);
-		glass.setVisible(true);
-		glass.refreshPaint();
-		frame.setVisible(true);
-		
-		//KeyHandler
-		KeyHandler keys=new KeyHandler(glass.getBird());
-		frame.addKeyListener(keys);
-		frame.requestFocus();
-		
-		//Thread
-		Refresh runn = new Refresh(glass);
-		Thread t1 = new Thread(runn);
-
-		try {
-			Thread.sleep(30);
-		} catch (InterruptedException e) {
-			Thread.currentThread().interrupt();
-		}
-		t1.start();
+		GameLauncer game=new GameLauncer();
+		game.launchGame();
 		
 	}
 	

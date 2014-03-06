@@ -6,6 +6,7 @@ package flappyBird;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
+
 import javax.swing.JComponent;
 
 /**
@@ -16,10 +17,10 @@ import javax.swing.JComponent;
 public class GlassPane extends JComponent {
 	private int x1 = 930;
 	private int x2 = 1480;
-	private int x3 = 180;
 	private Pipes pipeA = new Pipes(this.x1);
 	private Pipes pipeB = new Pipes(this.x2);
-	private Pipes pipeC = new Pipes(this.x3);
+	private Bird bird;
+	private boolean dead;
 
 	/**
 	 * 
@@ -27,6 +28,7 @@ public class GlassPane extends JComponent {
 	 * 
 	 */
 	public GlassPane() {
+		this.bird = new Bird();
 
 	}
 
@@ -39,34 +41,46 @@ public class GlassPane extends JComponent {
 		this.repaint();
 	}
 
+	public Bird getBird() {
+		return this.bird;
+	}
+	public void checkDead(Pipes pipe){
+		if(!(pipe.max()>bird.getY() )|| !(pipe.min()<bird.getY())){
+			this.dead=true;
+			System.out.println("Dead"+"  MAX="+pipe.max()+", min="+pipe.min());
+		}
+	}
 	@Override
 	public void paintComponent(Graphics g) {
 		Graphics2D g2 = (Graphics2D) g;
-		// this.g2=g2;
-
-		if (this.x1 < -151) {
-			this.x1 = 930;
-			this.pipeA = new Pipes(this.x1);
+		if (!this.dead) {
+			// Updates the x value of the pipe
+			if (this.x1 < -151) {
+				this.x1 = 930;
+				this.pipeA = new Pipes(this.x1);
+			}
+			if (this.x1 < -151) {
+				this.x1 = 930;
+				this.pipeA = new Pipes(this.x1);
+			}
+			this.x1 -= 3;
+			this.x2 -= 3;
+			// draws the pipe
+			this.pipeA.draw(g2, this.x1);
+			this.pipeB.draw(g2, this.x2);
+			// bird
+			this.bird.draw(g2);
+			// Checks if dead
+			if(Math.abs(Main.FRAMEWIDTH/2-(x1+50))<50){
+				this.checkDead(pipeA);
+			}
+			if(Math.abs(Main.FRAMEWIDTH/2-(x2+50))<50){
+				this.checkDead(pipeB);
+			}
+		} else {
+			//death Screen
+			ImageRendering.drawImage(g2, "Graphics/gameOver.jpg", 250, 400, 0);
 		}
-		if (this.x1 < -151) {
-			this.x1 = 930;
-			this.pipeA = new Pipes(this.x1);
-		}
-		if (this.x3 < -151) {
-			this.x3 = 930;
-			this.pipeC = new Pipes(this.x3);
-		}
-		this.x1 -= 5;
-		this.x2 -= 5;
-		this.x3 -= 5;
-//		System.out.println(x1 + "__" + x2 + "___" + x3);
-
-		this.pipeA.draw(g2, this.x1);
-		 this.pipeB.draw(g2, this.x2);
-//		 this.pipeC.draw(g2, this.x3);
-
-		// ImageRendering.drawImage(g2,"Graphics/PipeTop.png",50,120,Math.PI);
-
 	}
 
 }

@@ -25,7 +25,12 @@ public class Pipes {
 		this.opening = generator.nextInt(this.numberOFparts - 13) + 2;
 
 	}
-
+	public int max(){
+		return (this.opening+5)*Main.PIPEHEIGHT;
+	}
+	public int min(){
+		return (this.opening)*Main.PIPEHEIGHT;
+	}
 	public void draw(Graphics2D g2,int x) {
 		this.x=x;
 		for (int i = 0; i < this.opening; i++) {

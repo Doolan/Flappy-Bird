@@ -35,8 +35,9 @@ public class Main {
 //				| IllegalAccessException | UnsupportedLookAndFeelException exception) {
 //			exception.printStackTrace();
 //		}
-		GameLauncer game=new GameLauncer();
-		game.launchGame();
+//		GameLauncer game=new GameLauncer();
+//		game.launchGame();
+		MainMenu menu=new MainMenu();
 		
 	}
 	

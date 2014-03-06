@@ -23,6 +23,7 @@ public class GlassPane extends JComponent {
 	private Pipes pipeB;
 	private Bird bird;
 	private boolean dead;
+	private int score=0;
 
 	/**
 	 * 
@@ -63,9 +64,11 @@ public class GlassPane extends JComponent {
 			// Updates the x value of the pipe
 			if (this.x1 < -151) {
 				this.x1 = 930;
+				this.score++;
 				this.pipeA = new Pipes(this.x1,this.PIPEPATH);
 			}
 			if (this.x1 < -151) {
+				this.score++;
 				this.x1 = 930;
 				this.pipeA = new Pipes(this.x1,this.PIPEPATH);
 			}
@@ -83,6 +86,8 @@ public class GlassPane extends JComponent {
 			if(Math.abs(Main.FRAMEWIDTH/2-(this.x2-50))<50){
 				this.checkDead(this.pipeB);
 			}
+			
+			
 		} else {
 			//death Screen
 			ImageRendering.drawImage(g2, "Graphics/gameOver.png", 400, 450, 0);
